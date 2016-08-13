@@ -11,12 +11,21 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
     }
 }
 
@@ -36,6 +45,8 @@ dependencies {
     def jUnit = "junit:junit:4.12"
     def mockito = "org.mockito:mockito-core:1.10.19"
 
+    compile 'com.android.support:multidex:1.0.1'
+
     // App Dependencies
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
@@ -43,7 +54,11 @@ dependencies {
     compile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
 
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
-    compile "com.squareup.retrofit2:converter-simplexml:$RETROFIT_VERSION"
+    compile ('com.squareup.retrofit2:converter-simplexml:2.1.0') {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
 
     compile "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
     apt "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
@@ -61,13 +76,6 @@ dependencies {
     apt daggerCompiler
     testApt daggerCompiler
     androidTestApt daggerCompiler
-
-    compile 'com.mobsandgeeks:android-saripaar:2.0.3'
-    compile 'com.github.satyan:sugar:1.5'
-    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-    compile 'com.googlecode.htmlcompressor:htmlcompressor:1.5.2'
-    compile 'org.springframework:spring-expression:4.2.5.RELEASE'
-    compile 'com.github.amlcurran.showcaseview:library:5.0.0'
 
     // Instrumentation test dependencies
     androidTestCompile jUnit
@@ -93,8 +101,7 @@ dependencies {
     testCompile "org.hamcrest:hamcrest-integration:$HAMCREST_VERSION"
     testCompile 'org.robolectric:robolectric:3.1'
 
-    compile 'com.squareup.okhttp3:okhttp:2.0.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.0.0-RC1'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.facebook.stetho:stetho:1.3.1'

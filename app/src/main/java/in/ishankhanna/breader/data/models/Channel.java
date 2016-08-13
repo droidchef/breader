@@ -1,32 +1,47 @@
 package in.ishankhanna.breader.data.models;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Ishan Khanna
  */
+@Root(name = "channel")
 public class Channel {
 
+    @Element(name = "title")
     private String title;
 
+    @Element(name = "description")
     private String description;
 
+    @Element(name = "link")
     private String link;
 
+    @Element(name = "lastBuildDate")
     private String lastBuildDate;
 
+    @ElementList(name = "item", inline = true)
     private List<Item> items = new ArrayList<>();
 
+    @Element(name = "image")
     private Image image;
 
+    @Element(name = "generator")
     private String generator;
 
+    @Element(name = "copyright")
     private String copyright;
 
+    @Element(name = "language")
     private String language;
 
-    private String ttl;
+    @Element(name = "ttl")
+    private long ttl;
 
     public String getTitle() {
         return title;
@@ -100,11 +115,27 @@ public class Channel {
         this.language = language;
     }
 
-    public String getTtl() {
+    public long getTtl() {
         return ttl;
     }
 
-    public void setTtl(String ttl) {
+    public void setTtl(long ttl) {
         this.ttl = ttl;
+    }
+
+    @Override
+    public String toString() {
+        return "Channel{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", link='" + link + '\'' +
+                ", lastBuildDate='" + lastBuildDate + '\'' +
+                ", items=" + items +
+                ", image=" + image +
+                ", generator='" + generator + '\'' +
+                ", copyright='" + copyright + '\'' +
+                ", language='" + language + '\'' +
+                ", ttl=" + ttl +
+                '}';
     }
 }

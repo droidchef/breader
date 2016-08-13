@@ -2,7 +2,6 @@ package in.ishankhanna.breader.data.remote;
 
 import in.ishankhanna.breader.data.models.Rss;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
@@ -19,12 +18,9 @@ public class API {
 
     static {
 
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
-                .client(client)
+                .client(new OkHttpClient())
                 .addConverterFactory(SimpleXmlConverterFactory.create())
                 .build();
 
@@ -38,7 +34,6 @@ public class API {
         Call<Rss> getRssFeed();
 
     }
-
 
 
 }

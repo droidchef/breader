@@ -1,14 +1,21 @@
 package in.ishankhanna.breader.data.models;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 /**
  * @author Ishan Khanna
  */
+@Root(name = "image")
 public class Image {
 
+    @Element(name = "title")
     private String title;
 
+    @Element(name = "link")
     private String link;
 
+    @Element(name = "url")
     private String url;
 
     public String getTitle() {
