@@ -1,14 +1,20 @@
 package in.ishankhanna.breader.data.models;
 
-import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
+import org.simpleframework.xml.NamespaceList;
 import org.simpleframework.xml.Root;
 
 /**
  * @author Ishan Khanna
  */
 @Root(name = "item", strict = false)
+@NamespaceList({
+        @Namespace(reference="http://purl.org/dc/elements/1.1/", prefix = "dc"),
+        @Namespace(reference = "http://purl.org/rss/1.0/modules/content/", prefix = "content"),
+        @Namespace(reference = "http://www.w3.org/2005/Atom", prefix = "atom"),
+        @Namespace(reference = "http://search.yahoo.com/mrss/", prefix = "media")
+})
 public class Item {
 
     @Element(name = "guid")
@@ -26,17 +32,8 @@ public class Item {
     @Element(name = "link")
     private String link;
 
-    @Attribute(name = "height", required = false)
-    @Namespace(reference = "http://search.yahoo.com/mrss/", prefix = "media")
-    private int height;
-
-    @Attribute(name = "width", required = false)
-    @Namespace(reference = "http://search.yahoo.com/mrss/", prefix = "media")
-    private int width;
-
-    @Attribute(name = "url", required = false)
-    @Namespace(reference = "http://search.yahoo.com/mrss/", prefix = "media")
-    private String url;
+    @Element(name = "thumbnail")
+    private Thumbnail thumbnail;
 
     public Guid getGuid() {
         return guid;
@@ -77,4 +74,27 @@ public class Item {
     public void setLink(String link) {
         this.link = link;
     }
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(Thumbnail thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "guid=" + guid +
+                ", pubDate='" + pubDate + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", link='" + link + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                '}';
+    }
+
+
+
 }

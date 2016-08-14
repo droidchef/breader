@@ -14,4 +14,9 @@ public class HomePresenter extends BasePresenter<HomeMvpView> {
         super(context);
     }
 
+    public void presentFeedList() {
+        getMvpView().showFeedListFragment();
+    }
+
+
 }
