@@ -20,4 +20,6 @@ public interface FeedListMvpView extends MvpView {
 
     void hideRecyclerView();
 
+    void showToast(String message);
+
 }

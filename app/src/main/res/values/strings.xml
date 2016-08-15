@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Breader</string>
+    <string name="error_fetching_rss_feed">There was a problem fetching RSS feed! Please make sure you are connected to the Internet!</string>
 </resources>

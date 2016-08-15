@@ -8,8 +8,10 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
+import in.ishankhanna.breader.R;
 import in.ishankhanna.breader.data.DataAgent;
 import in.ishankhanna.breader.data.events.FeedAvailableEvent;
+import in.ishankhanna.breader.data.events.FeedSyncFromNetworkFailed;
 import in.ishankhanna.breader.data.events.ShowDetailStoryEvent;
 import in.ishankhanna.breader.data.models.Item;
 import in.ishankhanna.breader.presenters.base.BasePresenter;
@@ -51,6 +53,11 @@ public class FeedListPresenter extends BasePresenter<FeedListMvpView> {
         getMvpView().addItemsToRecyclerViewAdapter(items);
         getMvpView().hideProgress();
         getMvpView().showRecyclerView();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(FeedSyncFromNetworkFailed feedSyncFromNetworkFailed) {
+        getMvpView().showToast(context.getString(R.string.error_fetching_rss_feed));
     }
 
     public void requestDetailedStory(Item item) {

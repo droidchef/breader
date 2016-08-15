@@ -68,7 +68,7 @@ public class DataAgent {
 
             @Override
             public void onFailure(Call<Rss> call, Throwable t) {
-                // This is a terrible failure. Like internet connection, or host down kinda thingy.
+                EventBus.getDefault().post(new FeedSyncFromNetworkFailed());
             }
         });
 
