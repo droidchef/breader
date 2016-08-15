@@ -9,9 +9,9 @@
     <in.ishankhanna.UberProgressView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fading_circle_color="@android:color/holo_red_dark"
-        app:stationary_circle_color="@android:color/holo_red_dark"
-        app:orbiting_circle_color="@android:color/holo_red_dark"
+        app:fading_circle_color="@color/colorAccent"
+        app:stationary_circle_color="@color/colorPrimaryDark"
+        app:orbiting_circle_color="@color/colorAccent"
         app:direction="clockwise"
         app:orbiting_circle_radius="2dp"
         app:stationary_circle_radius="4dp"
