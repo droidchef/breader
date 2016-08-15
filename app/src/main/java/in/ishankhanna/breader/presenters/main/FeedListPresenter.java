@@ -10,6 +10,7 @@ import java.util.List;
 
 import in.ishankhanna.breader.data.DataAgent;
 import in.ishankhanna.breader.data.events.FeedAvailableEvent;
+import in.ishankhanna.breader.data.events.ShowDetailStoryEvent;
 import in.ishankhanna.breader.data.models.Item;
 import in.ishankhanna.breader.presenters.base.BasePresenter;
 import in.ishankhanna.breader.ui.views.main.FeedListMvpView;
@@ -52,4 +53,7 @@ public class FeedListPresenter extends BasePresenter<FeedListMvpView> {
         getMvpView().showRecyclerView();
     }
 
+    public void requestDetailedStory(Item item) {
+        EventBus.getDefault().post(new ShowDetailStoryEvent(item));
+    }
 }

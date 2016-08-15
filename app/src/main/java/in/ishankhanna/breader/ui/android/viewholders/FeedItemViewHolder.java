@@ -8,6 +8,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.ishankhanna.breader.R;
+import in.ishankhanna.breader.data.models.Item;
+import in.ishankhanna.breader.ui.android.adapters.FeedListAdapter;
 
 /**
  * @author Ishan Khanna
@@ -22,5 +24,13 @@ public class FeedItemViewHolder extends RecyclerView.ViewHolder {
     public FeedItemViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+    }
+
+    public void bind(final Item item, final FeedListAdapter.OnItemClickListener listener) {
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                listener.onItemClick(item);
+            }
+        });
     }
 }

@@ -23,7 +23,7 @@ import in.ishankhanna.breader.ui.views.main.FeedListMvpView;
 /**
  * @author Ishan Khanna
  */
-public class FeedListFragment extends Fragment implements FeedListMvpView {
+public class FeedListFragment extends Fragment implements FeedListMvpView, FeedListAdapter.OnItemClickListener {
 
     @BindView(R.id.recycler_view_feed_list)
     RecyclerView recyclerViewFeedList;
@@ -58,8 +58,6 @@ public class FeedListFragment extends Fragment implements FeedListMvpView {
         View rootView = inflater.inflate(R.layout.fragment_feed_list, container, false);
         ButterKnife.bind(this, rootView);
 
-
-
         return rootView;
 
     }
@@ -91,7 +89,7 @@ public class FeedListFragment extends Fragment implements FeedListMvpView {
     public void addItemsToRecyclerViewAdapter(List<Item> items) {
 
         recyclerViewFeedList.setLayoutManager(new LinearLayoutManager(getContext()));
-        feedListAdapter = new FeedListAdapter(getContext(), items);
+        feedListAdapter = new FeedListAdapter(getContext(), items, this);
         recyclerViewFeedList.setAdapter(feedListAdapter);
 
     }
@@ -106,4 +104,8 @@ public class FeedListFragment extends Fragment implements FeedListMvpView {
         recyclerViewFeedList.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onItemClick(Item item) {
+        feedListPresenter.requestDetailedStory(item);
+    }
 }

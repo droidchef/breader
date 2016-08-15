@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import in.ishankhanna.breader.R;
+import in.ishankhanna.breader.data.models.Item;
 import in.ishankhanna.breader.presenters.main.HomePresenter;
 import in.ishankhanna.breader.ui.android.fragments.FeedListFragment;
 import in.ishankhanna.breader.ui.views.main.HomeMvpView;
@@ -59,7 +60,10 @@ public class HomeActivity extends AppCompatActivity implements HomeMvpView {
     }
 
     @Override
-    public void showStoryDetailFragment() {
+    public void showStoryDetailFragment(Item item) {
+
+
 
     }
+
 }
