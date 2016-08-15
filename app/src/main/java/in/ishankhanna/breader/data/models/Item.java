@@ -13,11 +13,11 @@ import org.simpleframework.xml.Root;
  */
 @Root(name = "item", strict = false)
 @NamespaceList({
-        @Namespace(reference="http://purl.org/dc/elements/1.1/", prefix = "dc"),
+        @Namespace(reference = "http://purl.org/dc/elements/1.1/", prefix = "dc"),
         @Namespace(reference = "http://purl.org/rss/1.0/modules/content/", prefix = "content"),
         @Namespace(reference = "http://www.w3.org/2005/Atom", prefix = "atom"),
         @Namespace(reference = "http://search.yahoo.com/mrss/", prefix = "media")
-})
+        })
 public class Item implements Parcelable {
 
     @Element(name = "guid")
@@ -101,7 +101,9 @@ public class Item implements Parcelable {
 
 
     @Override
-    public int describeContents() { return 0; }
+    public int describeContents() {
+        return 0;
+    }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -124,9 +126,13 @@ public class Item implements Parcelable {
 
     public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
         @Override
-        public Item createFromParcel(Parcel source) {return new Item(source);}
+        public Item createFromParcel(Parcel source) {
+            return new Item(source);
+        }
 
         @Override
-        public Item[] newArray(int size) {return new Item[size];}
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
     };
 }

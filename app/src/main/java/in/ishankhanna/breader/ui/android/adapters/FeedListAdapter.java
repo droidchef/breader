@@ -36,7 +36,8 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedItemViewHolder> {
     @Override
     public FeedItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_feed_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_feed_item, parent,
+                false);
 
         FeedItemViewHolder feedItemViewHolder = new FeedItemViewHolder(view);
 
@@ -47,7 +48,6 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedItemViewHolder> {
     public void onBindViewHolder(FeedItemViewHolder holder, int position) {
 
         Item item = itemList.get(position);
-        System.out.println(item);
         Picasso.with(context).load(item.getThumbnail().getUrl())
                 .resizeDimen(R.dimen.thumbnail_size, R.dimen.thumbnail_size)
                 .into(holder.ivThumbnail);

@@ -11,8 +11,8 @@ public class Guid {
 
     private String content;
 
-    @Attribute(required = true)
-    private boolean isPermaLink;
+    @Attribute(name = "isPermaLink", required = true)
+    private boolean permaLink;
 
     public String getContent() {
         return content;
@@ -23,10 +23,10 @@ public class Guid {
     }
 
     public boolean isPermaLink() {
-        return isPermaLink;
+        return permaLink;
     }
 
     public void setPermaLink(boolean permaLink) {
-        isPermaLink = permaLink;
+        this.permaLink = permaLink;
     }
 }

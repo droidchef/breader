@@ -18,7 +18,7 @@ public class DataAgent {
 
     public static final String TAG = DataAgent.class.getSimpleName();
 
-    private static DataAgent INSTANCE;
+    private static DataAgent instance;
 
     private MemoryHelper memoryHelper;
 
@@ -28,11 +28,11 @@ public class DataAgent {
 
     public static DataAgent getInstance() {
 
-        if (INSTANCE == null) {
-            INSTANCE = new DataAgent();
+        if (instance == null) {
+            instance = new DataAgent();
         }
 
-        return INSTANCE;
+        return instance;
     }
 
     /**

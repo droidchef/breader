@@ -22,6 +22,11 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+        disable 'InvalidPackage'
+    }
+
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'

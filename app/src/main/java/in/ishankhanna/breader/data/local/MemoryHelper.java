@@ -26,20 +26,20 @@ public class MemoryHelper implements DataHelper {
     /**
      * This tells the last time the feed received an update in memory.
      */
-    private long feedLastUpdatedAt;
+    private long feedLastUpdatedAtTimeStamp;
 
-    private static MemoryHelper INSTANCE;
+    private static MemoryHelper instance;
 
     private MemoryHelper() {
     }
 
     public static MemoryHelper getInstance() {
 
-        if (INSTANCE == null) {
-            INSTANCE = new MemoryHelper();
+        if (instance == null) {
+            instance = new MemoryHelper();
         }
 
-        return INSTANCE;
+        return instance;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class MemoryHelper implements DataHelper {
         if (rss == null) {
             rss = rssFeed;
             setFeedItemCount(rssFeed.getChannel().getItems().size());
-            setFeedLastUpdatedAt(System.currentTimeMillis());
+            setFeedLastUpdatedAtTimeStamp(System.currentTimeMillis());
         }
     }
 
@@ -74,7 +74,7 @@ public class MemoryHelper implements DataHelper {
 
     @Override
     public long feedLastUpdatedAt() {
-        return feedLastUpdatedAt;
+        return feedLastUpdatedAtTimeStamp;
     }
 
     @Override
@@ -82,9 +82,8 @@ public class MemoryHelper implements DataHelper {
         this.itemCount = itemCount;
     }
 
-    @Override
-    public void setFeedLastUpdatedAt(long feedLastUpdatedAt) {
-        this.feedLastUpdatedAt = feedLastUpdatedAt;
+    public void setFeedLastUpdatedAtTimeStamp(long feedLastUpdatedAtTimeStamp) {
+        this.feedLastUpdatedAtTimeStamp = feedLastUpdatedAtTimeStamp;
     }
 
 

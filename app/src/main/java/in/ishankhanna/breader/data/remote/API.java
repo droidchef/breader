@@ -14,7 +14,7 @@ public class API {
 
     private static final String API_BASE_URL = "http://feeds.bbci.co.uk/";
 
-    public static NewsFeedService newsFeedService;
+    public static final NewsFeedService newsFeedService;
 
     static {
 

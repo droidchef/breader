@@ -56,7 +56,9 @@ public class Thumbnail implements Parcelable {
 
 
     @Override
-    public int describeContents() { return 0; }
+    public int describeContents() {
+        return 0;
+    }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -73,13 +75,17 @@ public class Thumbnail implements Parcelable {
         this.url = in.readString();
     }
 
-    public static final Parcelable.Creator<Thumbnail> CREATOR = new Parcelable.Creator<Thumbnail>
-            () {
+    public static final Parcelable.Creator<Thumbnail> CREATOR =
+            new Parcelable.Creator<Thumbnail>() {
         @Override
-        public Thumbnail createFromParcel(Parcel source) {return new Thumbnail(source);}
+        public Thumbnail createFromParcel(Parcel source) {
+            return new Thumbnail(source);
+        }
 
         @Override
-        public Thumbnail[] newArray(int size) {return new Thumbnail[size];}
+        public Thumbnail[] newArray(int size) {
+            return new Thumbnail[size];
+        }
     };
 }
 

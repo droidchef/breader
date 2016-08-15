@@ -23,7 +23,8 @@ import in.ishankhanna.breader.ui.views.main.FeedListMvpView;
 /**
  * @author Ishan Khanna
  */
-public class FeedListFragment extends Fragment implements FeedListMvpView, FeedListAdapter.OnItemClickListener {
+public class FeedListFragment extends Fragment implements FeedListMvpView,
+        FeedListAdapter.OnItemClickListener {
 
     @BindView(R.id.recycler_view_feed_list)
     RecyclerView recyclerViewFeedList;
@@ -52,8 +53,8 @@ public class FeedListFragment extends Fragment implements FeedListMvpView, FeedL
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
-    Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_feed_list, container, false);
         ButterKnife.bind(this, rootView);

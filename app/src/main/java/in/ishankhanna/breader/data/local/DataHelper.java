@@ -19,6 +19,6 @@ public interface DataHelper {
 
     void setFeedItemCount(int itemCount);
 
-    void setFeedLastUpdatedAt(long feedLastUpdatedAt);
+    void setFeedLastUpdatedAtTimeStamp(long feedLastUpdatedAt);
 
 }

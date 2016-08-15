@@ -61,7 +61,8 @@ public class StoryDetailFragment extends Fragment implements StoryDetailMvpView 
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_story_detail, container, false);
         ButterKnife.bind(this, rootView);
