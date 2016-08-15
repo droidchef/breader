@@ -1,5 +1,8 @@
 package in.ishankhanna.breader.data.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.NamespaceList;
@@ -15,7 +18,7 @@ import org.simpleframework.xml.Root;
         @Namespace(reference = "http://www.w3.org/2005/Atom", prefix = "atom"),
         @Namespace(reference = "http://search.yahoo.com/mrss/", prefix = "media")
 })
-public class Item {
+public class Item implements Parcelable {
 
     @Element(name = "guid")
     private Guid guid;
@@ -83,6 +86,7 @@ public class Item {
         this.thumbnail = thumbnail;
     }
 
+
     @Override
     public String toString() {
         return "Item{" +
@@ -96,5 +100,33 @@ public class Item {
     }
 
 
+    @Override
+    public int describeContents() { return 0; }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.pubDate);
+        dest.writeString(this.title);
+        dest.writeString(this.description);
+        dest.writeString(this.link);
+        dest.writeParcelable(this.thumbnail, flags);
+    }
+
+    public Item() {}
+
+    protected Item(Parcel in) {
+        this.pubDate = in.readString();
+        this.title = in.readString();
+        this.description = in.readString();
+        this.link = in.readString();
+        this.thumbnail = in.readParcelable(Thumbnail.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel source) {return new Item(source);}
+
+        @Override
+        public Item[] newArray(int size) {return new Item[size];}
+    };
 }

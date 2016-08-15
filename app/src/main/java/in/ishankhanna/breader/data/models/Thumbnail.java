@@ -1,5 +1,8 @@
 package in.ishankhanna.breader.data.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -7,7 +10,7 @@ import org.simpleframework.xml.Root;
  * @author Ishan Khanna
  */
 @Root(name = "thumbnail")
-public class Thumbnail {
+public class Thumbnail implements Parcelable {
 
     @Attribute(name = "height")
     private int height;
@@ -50,5 +53,33 @@ public class Thumbnail {
                 ", url='" + url + '\'' +
                 '}';
     }
+
+
+    @Override
+    public int describeContents() { return 0; }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.height);
+        dest.writeInt(this.width);
+        dest.writeString(this.url);
+    }
+
+    public Thumbnail() {}
+
+    protected Thumbnail(Parcel in) {
+        this.height = in.readInt();
+        this.width = in.readInt();
+        this.url = in.readString();
+    }
+
+    public static final Parcelable.Creator<Thumbnail> CREATOR = new Parcelable.Creator<Thumbnail>
+            () {
+        @Override
+        public Thumbnail createFromParcel(Parcel source) {return new Thumbnail(source);}
+
+        @Override
+        public Thumbnail[] newArray(int size) {return new Thumbnail[size];}
+    };
 }
 
